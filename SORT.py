@@ -84,26 +84,35 @@ def partition(A,p,r):
       else:
          return j
 
-#MERGE SORT (something went wrong :c)
-def mergesort_main(A):
+#MERGE SORT
+def ms_main(l, r, A):
     B=[]
-    mergesort(A,0,len(A)-1,B)
+    for i in range(len(A)):
+        B.append(0)
+    mergesort(A, 0, len(A)-1, B)
+    m=(l+r)//2
+    if l<r:
+        ms_main(l, m, A)
+        ms_main(m+1, r, A)
+        mergesort(A, l, r, B)
     return A
 
-def mergesort(A,l,r,B):
-    m = (l + r )//2
-    if (m-1)>0:
-        mergesort(A,0,m,B)
-    if (r-m)>1:
-        mergesort(A,m+1,r,B)
+def mergesort(A, l, r, B):
+    m=(l+r)//2
+    if m-1>0:
+        mergesort(A, 1, m, B)
+    if r-m>1:
+        mergesort(A, m+1, r, B)
+
     i=l
     j=m+1
-    for k in range(0,r):
-        if (i<=m and j>r) or (i<= m and j<=r and A[i]<=A[j]):
+    for k in range(l, r+1):
+        if (i<=m and j>r) or (i <=m and j<=r and A[i] <= A[j]):
             B[k] = A[i]
-            i=i+1
+            i+=1
         else:
             B[k] = A[j]
-            j=j+1
-    for k in range (l,r):
-        A[k] = B[k]
+            j+=1
+
+    for k in range(l, r+1):
+        A[k]=B[k]
