@@ -63,26 +63,23 @@ def quicksort(A,p,r):
       quicksort(A,q+1,r)
 
 def partition(A,p,r):
-   piv = randint(p,r)
-   x=A[piv]
-
-   i=p-1
-   j=r+1
-
-   while True:
-      i=i+1
-      j=j-1
-
-      while A[i]<x:
-         i=i+1
-
-      while A[j]>x:
-         j=j-1
-
-      if i<j:
-         A[i],A[j]=A[j],A[i]
-      else:
-         return j
+    piv = randint(p,r)
+    #piv = r-1
+    #piv = (p+r)//2
+    x=A[piv]
+    i=p-1
+    j=r+1
+    while True:
+        i=i+1
+        j=j-1
+        while A[i]<x:
+            i=i+1
+        while A[j]>x:
+            j=j-1
+        if i<j:
+            A[i],A[j]=A[j],A[i]
+        else:
+            return j
 
 #MERGE SORT
 def ms_main(l, r, A):
