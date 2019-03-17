@@ -40,8 +40,8 @@ for i in range(10,0,-1):
         index1=index1+1
     else:
         E[index2*(-1)]=i
-        index2=index2+1
-print (E)"""
+        index2=index2+1"""
+
 E1=[]
 E2=[]
 for i in range(10):
@@ -55,7 +55,6 @@ for i in range(10):
         E2.append(E[i])
 E1=E1[::-1]
 E=E1+E2
-print (E)
 
 start = datetime.datetime.now()
 insertion(A)
