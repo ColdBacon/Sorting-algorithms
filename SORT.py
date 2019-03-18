@@ -67,17 +67,17 @@ def partition(A,p,r):
     #piv = r-1
     #piv = (p+r)//2
     x=A[piv]
-    i=p-1
-    j=r+1
+    i=p
+    j=r
     while True:
-        i=i+1
-        j=j-1
         while A[i]<x:
             i=i+1
         while A[j]>x:
             j=j-1
         if i<j:
             A[i],A[j]=A[j],A[i]
+            i=i+1
+            j=j-1
         else:
             return j
 
@@ -87,17 +87,12 @@ def ms_main(l, r, A):
     for i in range(len(A)):
         B.append(0)
     mergesort(A, 0, len(A)-1, B)
-    m=(l+r)//2
-    if l<r:
-        ms_main(l, m, A)
-        ms_main(m+1, r, A)
-        mergesort(A, l, r, B)
     return A
 
 def mergesort(A, l, r, B):
     m=(l+r)//2
-    if m-1>0:
-        mergesort(A, 1, m, B)
+    if m-l>0:
+        mergesort(A, l, m, B)
     if r-m>1:
         mergesort(A, m+1, r, B)
 
